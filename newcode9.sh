@@ -4,6 +4,7 @@ mkdir /opt/aepona/ngw/gwuser/data_para
 mkdir /opt/aepona/ngw/gwuser/output1
 mkdir /opt/aepona/ngw/gwuser/para
 mkdir /opt/aepona/ngw/gwuser/hours
+mkdir /opt/aepona/ngw/gwuser/new
 
 rm /opt/aepona/ngw/gwuser/grp/*
 rm /opt/aepona/ngw/gwuser/data_para/*
@@ -30,21 +31,26 @@ count3=("Mm7SubmitReq" "Mm7SubmitRes" "Mm7DeliverReq" "Mm7DeliverReportReq" "Mm7
 file_type=( "9000" "9001" "9002" "9003" "1500" )
 
 
-for file1 in /opt/aepona/ngw/logs/NgwStats*; 
+cp /opt/aepona/ngw/logs/NgwStats* /opt/aepona/ngw/gwuser/new/
+
+cd /opt/aepona/ngw/gwuser/new/ || exit
+
+
+for file1 in *; 
     do
         
-        sed -i '1d' /opt/aepona/ngw/logs/"$file1"
+        sed -i '1d' /opt/aepona/ngw/gwuser/new/"$file1"
         
-        awk -F " " '{print $1" "$2" "$3"\t"$7" "$9" "$10" "$11" "$12" "$13" "$14" "$15}' /opt/aepona/ngw/logs/"$file1" >test1
+        awk -F " " '{print $1" "$2" "$3"\t"$7" "$9" "$10" "$11" "$12" "$13" "$14" "$15}' /opt/aepona/ngw/gwuser/new/"$file1" >test1
         
-        awk -F'[: ]' '{ date=$1"_"$2; sub(/:/, "", date); file=sprintf("%s/%s", "output1", 'date'); print >> file }' "test1"
+        awk -F'[: ]' '{ date=$1"_"$2; sub(/:/, "", date); file=sprintf("%s/%s", "/opt/aepona/ngw/gwuser/output1", 'date'); print >> file }' "test1"
 
 
 done
 
 
 
-cd /opt/aepona/ngw/gwuser/ || exit
+cd /opt/aepona/ngw/gwuser/output || exit
 
 
 
