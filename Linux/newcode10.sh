@@ -552,3 +552,12 @@ while true
 
 done
 
+
+
+
+rm -rf /opt/aepona/ngw/gwuser/grp
+rm -rf /opt/aepona/ngw/gwuser/data_para
+rm -rf /opt/aepona/ngw/gwuser/output1
+rm -rf /opt/aepona/ngw/gwuser/para
+rm -rf /opt/aepona/ngw/gwuser/hours
+rm -rf /opt/aepona/ngw/gwuser/new
