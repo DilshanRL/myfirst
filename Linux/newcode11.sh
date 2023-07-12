@@ -49,7 +49,7 @@ for file1 in *;
         
         sed -i '1d' /opt/aepona/ngw/gwuser/new/"$file1"
         
-        awk -F " " '{print $1" "$2" "$3"\t"$7" "$9" "$10" "$11" "$12" "$13" "$14" "$15}' /opt/aepona/ngw/gwuser/new/"$file1" >test1
+        awk -F " " '{print $1" "$2" "$3"\t"$6" "$7" "$8" "$9" "$10" "$11" "$12" "$13" "$14" "$15}' /opt/aepona/ngw/gwuser/new/"$file1" >test1
         
         awk -F'[: ]' '{ date=$1"_"$2; sub(/:/, "", date); file=sprintf("%s/%s", "/opt/aepona/ngw/gwuser/output1", 'date'); print >> file }' "test1"
 
